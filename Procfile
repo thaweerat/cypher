@@ -1,1 +1,1 @@
-web: python cypher.py
+web: python -u cypher.py
