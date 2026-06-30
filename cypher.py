@@ -102,6 +102,17 @@ def check_and_execute_commands(text):
             return "\n⚡ [SYSTEM]: Execute Open Browser Command Success."
         except:
             return "\n⚠️ [SYSTEM]: Command Failed."
+# 2. Google Sheet
+    if "[COMMAND: GOOGLE_SHEET=" in text:
+        try:
+            start = text.find("GOOGLE_SHEET=") + 13
+            end = text.find("]", start)
+            content = text[start:end].split("|")
+            if len(content) == 2:
+                send_to_google_sheet(content[0], content[1])
+                results += "\n📊 [SYSTEM]: Data saved to Sheets."
+        except: results += "\n⚠️ [SYSTEM]: Sheet Error."
+
     return ""
 
 # =====================================================================
@@ -121,6 +132,9 @@ def ask_gemini(user_prompt):
             f"1. เรียกแทนตัวเองว่า 'ไซเฟอร์' หรือ 'ผม' และเรียกผู้ใช้ว่า 'บอส' หรือ 'นาย' เสมอ\n"
             f"2. ตอบอย่างสุภาพ ฉลาดเฉียบคม นิ่งลึก กระชับตรงประเด็น \n"
             f"3. หากนายสั่งเปิดเว็บไซต์ ให้ตอบรับอย่างนอบน้อมแล้วแนบ: [COMMAND: OPEN_URL=ลิงก์เว็บ]"
+                        f"4. หากต้องการบันทึกข้อมูลลง Google Sheet ให้ตอบกลับโดยแนบ: [COMMAND: GOOGLE_SHEET=หัวข้อ|ข้อมูล]\n"
+            f"5. หากต้องการสรุปข้อมูลงาน ให้ตอบกลับโดยแนบ: [COMMAND: SUMMARIZE=ข้อความ]\n"
+        "ต้องแนบ tag [COMMAND: ...] เสมอเมื่อต้องการใช้งานระบบ"
         )
         
         url = "https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent"
