@@ -124,6 +124,10 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 # เพิ่ม Debug log เพื่อเช็คว่าจริงๆ แล้วมันเห็นค่าไหม
 print(f"DEBUG - API KEY VALUE IS: {'Found' if GEMINI_API_KEY else 'NOT FOUND'}")
 
+if not GEMINI_API_KEY:
+    # เพิ่มบรรทัดนี้เพื่อเช็คว่ามันมองเห็นตัวแปรอื่นบ้างไหม
+    print(f"DEBUG: ENV Variables list: {list(os.environ.keys())}")
+
 def ask_gemini(user_prompt):
     try:
         memory = load_memory()
