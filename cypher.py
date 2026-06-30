@@ -116,6 +116,14 @@ def ask_gemini(user_prompt):
         url = "https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent"
         headers = {"Content-Type": "application/json", "x-goog-api-key": GEMINI_API_KEY}
         
+@app.route('/ask', methods=['POST'])
+def ask():
+    print("API KEY LOADED:", GEMINI_API_KEY[:10] if GEMINI_API_KEY else "NONE")
+    user_data = request.json
+    user_message = user_data.get("message", "")
+    response = ask_gemini(user_message)
+    return jsonify({"response": response})
+
         past_conversation = get_recent_context(limit=5)
         deep_memory_context = search_deep_memory(user_prompt)
         
