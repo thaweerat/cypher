@@ -146,7 +146,7 @@ def ask_gemini(user_prompt):
 def start_cypher_system():
     os.system('cls' if os.name == 'nt' else 'clear')
     print("┌────────────────────────────────────────────────────────┐")
-    print("│  🛰️  [CYPHER CORE v3.6 - JARVIS MODE] ONLINE & SECURE   │")
+    print("│  🛰️  [CYPHER CORE v3.6 - JARVIS MODE] ONLINE & SECURE  │")
     print("│  Status: Boss Profile Loaded | Connection Tier: PAID   │")
     print("└────────────────────────────────────────────────────────┘")
     print("🔹 CYPHER: ระบบไซเฟอร์ (โหมดจาวิส) เปิดใช้งานแล้วครับนาย")
@@ -179,8 +179,5 @@ def run_flask():
     app.run(port=5000, debug=False, use_reloader=False)
 
 if __name__ == "__main__":
-    t = threading.Thread(target=run_flask)
-    t.daemon = True
-    t.start()
-    print("🌐 [FLASK]: iPhone API Server running on port 5000")
-    start_cypher_system()
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
