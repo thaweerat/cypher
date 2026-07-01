@@ -122,7 +122,7 @@ def check_and_execute_commands(text):
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
 print(f"DEBUG - ALL ENV VARS: {list(os.environ.keys())}")
 print(f"DEBUG - API KEY VALUE IS: {GEMINI_API_KEY[:5] if GEMINI_API_KEY else 'NOT FOUND'}")
-
+ห
 def ask_gemini(user_prompt):
     try:
         memory = load_memory()
@@ -180,7 +180,7 @@ def ask():
     user_message = user_data.get("message", "")
     response = ask_gemini(user_message)
     record_activity(user_message, response)
-    return jsonify({"response": response})
+    return ai_response
 
 # =====================================================================
 # 5. STARK INTERFACE (โหมด terminal สำหรับใช้บนคอม)
