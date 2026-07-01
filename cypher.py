@@ -119,14 +119,10 @@ def check_and_execute_commands(text):
 # 3. SECURE COGNITIVE CONNECTION (เชื่อมต่อเครือข่ายความรู้)
 # =====================================================================
 # ใช้การดึงจาก os.environ โดยตรงและตรวจสอบให้มั่นใจ
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
+print(f"DEBUG - ALL ENV VARS: {list(os.environ.keys())}")
+print(f"DEBUG - API KEY VALUE IS: {GEMINI_API_KEY[:5] if GEMINI_API_KEY else 'NOT FOUND'}")
 
-if not GEMINI_API_KEY:
-    print("DEBUG - API KEY VALUE IS: NOT FOUND")
-else:
-    print("DEBUG - API KEY FOUND!")
-
-def ask_gemini(user_prompt):
     try:
         memory = load_memory()
         user_profile = memory.get("user_profile", {})
