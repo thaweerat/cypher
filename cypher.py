@@ -6,7 +6,10 @@ import webbrowser
 from flask import Flask, request, jsonify
 import builtins
 import os
-
+# เติมบรรทัดนี้ไว้ด้านบนสุดของไฟล์
+import sys
+import io
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 # --- เพิ่มโค้ดส่วนนี้เพื่อ Patch ระบบ ---
 def patched_input(prompt=""):
     # ถ้ารันบน Railway (ที่มีตัวแปร RAILS_ENV หรือ RAILWAY_ENVIRONMENT)
@@ -180,7 +183,7 @@ def ask():
     response = ask_gemini(user_message)
     record_activity(user_message, response)
     ai_response = "ไซเฟอร์พร้อมทำงานครับบอส" 
-    return ai_response
+        return str(ai_response)
 
 # =====================================================================
 # 5. STARK INTERFACE (โหมด terminal สำหรับใช้บนคอม)
