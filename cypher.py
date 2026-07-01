@@ -184,7 +184,7 @@ def ask():
     user_message = user_data.get("message", "")
     response = ask_gemini(user_message)
     record_activity(user_message, response)
-    ai_response = "ไซเฟอร์พร้อมทำงานครับบอส" 
+    ai_response = model.generate_content(user_message) 
     return Response(str(ai_response), mimetype='text/plain; charset=utf-8')
 
 # =====================================================================
