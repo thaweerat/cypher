@@ -183,7 +183,7 @@ def ask():
     response = ask_gemini(user_message)
     record_activity(user_message, response)
     ai_response = "ไซเฟอร์พร้อมทำงานครับบอส" 
-    return str(ai_response)
+    return Response(str(ai_response), mimetype='text/plain; charset=utf-8')
 
 # =====================================================================
 # 5. STARK INTERFACE (โหมด terminal สำหรับใช้บนคอม)
