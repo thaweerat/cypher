@@ -172,6 +172,8 @@ def ask_gemini(user_prompt):
 # =====================================================================
 # 4. FLASK SERVER (ส่วนเชื่อมต่อเพื่อรอรับคำสั่ง)
 # =====================================================================
+from flask import Flask, request, Response
+
 app = Flask(__name__)
 
 @app.route('/ask', methods=['POST'])
