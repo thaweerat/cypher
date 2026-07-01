@@ -122,7 +122,7 @@ def check_and_execute_commands(text):
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
 print(f"DEBUG - ALL ENV VARS: {list(os.environ.keys())}")
 print(f"DEBUG - API KEY VALUE IS: {GEMINI_API_KEY[:5] if GEMINI_API_KEY else 'NOT FOUND'}")
-    try:
+	try:
         memory = load_memory()
         user_profile = memory.get("user_profile", {})
         
