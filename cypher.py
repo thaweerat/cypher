@@ -179,6 +179,7 @@ def ask():
     user_message = user_data.get("message", "")
     response = ask_gemini(user_message)
     record_activity(user_message, response)
+    ai_response = "ไซเฟอร์พร้อมทำงานครับบอส" 
     return ai_response
 
 # =====================================================================
